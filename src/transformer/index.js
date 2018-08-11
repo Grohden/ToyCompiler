@@ -18,7 +18,7 @@ function generateASTBody(generator) {
     ])(node);
 
     if (isPenNode(node)) {
-      return transformer(generator);
+      return generateASTBody(generator);
     } else {
       return prepend(newExpression, generateASTBody(generator));
     }
