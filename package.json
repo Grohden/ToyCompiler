@@ -4,7 +4,7 @@
   "description": "Simple compiler for me to learn",
   "main": "index.js",
   "scripts": {
-    "test": "test",
+    "test": "echo \"TODO\"",
     "lint": "eslint src/"
   },
   "keywords": [
