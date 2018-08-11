@@ -9,7 +9,7 @@ const isPaper = propSatisfies(test(/paper/i), "value");
 const isLine = propSatisfies(test(/line/i), "value");
 const isPen = propSatisfies(test(/pen/i), "value");
 
-const parser = tokenGenerator => {
+const generateASTBody = tokenGenerator => {
   const next = tokenGenerator.next();
 
   if (!next.done) {
@@ -37,5 +37,10 @@ const parser = tokenGenerator => {
     return [];
   }
 };
+
+const parser = tokenGenerator => ({
+  type: "Drawing",
+  body: generateASTBody(tokenGenerator)
+});
 
 module.exports = parser;

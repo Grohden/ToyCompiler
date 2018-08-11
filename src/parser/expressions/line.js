@@ -1,4 +1,4 @@
-const { any, all, prop, map, ifElse, always, pluck } = require("ramda");
+const { filter, any, all, prop, map, ifElse, always, pluck } = require("ramda");
 const { isNumberToken } = require("../tokenValidation");
 
 const isDone = prop("done");
@@ -29,7 +29,9 @@ const generateLineExpression = tokenGenerator => {
   } else {
     const message = ifElse(
       () => isMissingArguments,
-      always("Missing arguments for LINE expression"),
+      always(
+        `LINE expression requires 4 arguments, but got ${filter(isDone).length}`
+      ),
       always("LINE expression expects all arguments to be NUMBERS")
     )();
 
